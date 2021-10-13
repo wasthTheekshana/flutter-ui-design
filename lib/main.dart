@@ -53,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Colors.grey,
+                  color: Colors.white70,
                   borderRadius: BorderRadius.vertical(
                     bottom: Radius.circular(30),
                   ),
@@ -128,12 +128,99 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     Container(
                       height: 200.0,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          SlideCard(
+                            image: AssetImage('images/img1.jpg'),
+                          ),
+                          SlideCard(
+                            image: AssetImage('images/img2.jpg'),
+                          ),
+                          SlideCard(
+                            image: AssetImage('images/img3.jpg'),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    Container(
+                      height: 150.0,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.0),
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage('images/img4.jpg')),
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.0),
+                          gradient: LinearGradient(
+                              begin: Alignment.bottomRight,
+                              stops: [
+                                0.3,
+                                0.9
+                              ],
+                              colors: [
+                                Colors.black.withOpacity(.8),
+                                Colors.black.withOpacity(.2),
+                              ]),
+                        ),
+                        child: Align(
+                          alignment: Alignment.bottomLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Text(
+                              'Best Design',
+                              style: TextStyle(
+                                fontSize: 25.0,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class SlideCard extends StatelessWidget {
+  SlideCard({required this.image});
+  final AssetImage image;
+  @override
+  Widget build(BuildContext context) {
+    return AspectRatio(
+      aspectRatio: 2.62 / 3,
+      child: Container(
+        margin: EdgeInsets.only(right: 15.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: image,
+          ),
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20.0),
+              gradient: LinearGradient(
+                begin: Alignment.bottomRight,
+                stops: [0.1, 0.9],
+                colors: [
+                  Colors.black.withOpacity(.8),
+                  Colors.black.withOpacity(.1),
+                ],
+              )),
         ),
       ),
     );
